@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css?family=Kalam:400,700&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&subset=latin-ext");
+/*-----box-sizing-----*/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  /* Safari/Chrome, other WebKit */
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+
+/*-----RESET CSS-----*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-size: 30px;
+}
+
+body {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  background: #fcd2ab url("../images/creampaper.png");
+  background-blend-mode: multiply;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 .3rem;
+}
+
+button:active {
+  padding: 0 .3rem;
+}
+
+.disable-events {
+  pointer-events: none;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  font-style: normal;
+  color: green;
+  font-family: "Kalam";
+  margin: .2em .4em;
+  padding: .2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#board {
+  height: calc(100vh - 1.2em);
+  margin: .6em .4em;
+}
+
+nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-flow: row;
+      flex-flow: row;
+  font-size: 1.1em;
+  font-weight: 700;
+  font-style: italic;
+  color: #ea7223;
+  height: 1.5rem;
+}
+
+nav .board-name {
+  display: inline-block;
+  padding: 0 .4em;
+  border-top: 3px solid #dcb854;
+  border-right: 3px solid #dcb854;
+  border-left: 3px solid #dcb854;
+  background-color: #f2ca5c;
+}
+
+nav .board-name:first-child {
+  border-radius: 0.2em 0 0 0;
+}
+
+nav .add-board-btn {
+  font-size: 1em;
+  color: #ea7223;
+  border-top: 3px solid #dcb854;
+  border-right: 3px solid #dcb854;
+  border-radius: 0 0.2em 0 0;
+  background-color: #f2ca5c;
+}
+
+.column-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  min-width: 300px;
+  min-height: calc(100% - 1.5rem);
+  padding: .4em .4em;
+  background-color: #f2ca5c;
+  border: 3px solid #dcb854;
+  border-radius: 0 0.2em 0.2em;
+}
+
+.column-container .column {
+  width: 300px;
+  min-height: 330px;
+  margin: 0.2rem;
+  border: 3px solid #a1bf85;
+  border-radius: 0.2em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-flow: column;
+      flex-flow: column;
+}
+
+.column-container .column .column-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-flow: row;
+      flex-flow: row;
+}
+
+.column-container .column .column-header h2 {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #484f7a;
+  margin: 0 auto;
+}
+
+.column-container .column .column-header .delete-column-btn {
+  width: 1.15rem;
+  height: 1.2rem;
+  transform: scale(1.3, 1);
+  margin: -.05rem .1rem .15rem 0;
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: #ea7223;
+  border-bottom: 3px solid #a1bf85;
+  border-left: 3px solid #a1bf85;
+  border-radius: 0 0.2em;
+}
+
+.column-container .column .add-card-btn {
+  font-size: 1em;
+  color: #ea7223;
+  border-top: 3px solid #a1bf85;
+  border-bottom: 3px solid #a1bf85;
+  border-bottom-style: dotted;
+}
+
+.column-container .column .column-card-list {
+  -ms-flex: 1;
+      flex: 1;
+  padding: .3em;
+}
+
+.column-container .column .column-card-list .card, .column-container .column .column-card-list .card-placeholder {
+  margin: 10px auto;
+  border: 3px solid #a1bf85;
+  border-radius: 0.2em;
+}
+
+.column-container .column .column-card-list .card {
+  background-color: #f7cea8;
+}
+
+.column-container .column .column-card-list .card-placeholder {
+  height: 71px;
+}
+
+.column-container .column .column-card-list .card-description {
+  min-height: 1em;
+  padding: .2em .4em;
+  font-size: 0.6em;
+  font-weight: 400;
+  color: #3f456a;
+}
+
+.column-container .column .column-card-list .delete-card-btn {
+  width: 100%;
+  height: 1em;
+  line-height: .5em;
+  font-size: 1em;
+  color: #ea7223;
+  border-top: 3px solid #a1bf85;
+}
+
+.column-container .add-column-btn {
+  min-width: 100px;
+  padding: 0;
+  font-size: 1.6em;
+  color: #484f7a;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-flow: row;
+      flex-flow: row;
+  -ms-flex-order: 100;
+      order: 100;
+}
+/*# sourceMappingURL=style.css.map */

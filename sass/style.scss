@@ -1,0 +1,181 @@
+//-----FONTS-----
+
+@import url('https://fonts.googleapis.com/css?family=Kalam:400,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&subset=latin-ext');
+
+//-----stylesheets-----
+
+@import 'box-sizing';
+@import 'reset';
+@import 'mixins';
+
+html {
+  font-size: 30px;
+}
+
+//-----variables-----
+
+$yellow: #f2ca5c;
+$dark-yellow: #dcb854;
+$orange: #ea7223;
+$green: #a1bf85;
+$blue: #484f7a;
+
+$nav-height: 1.5rem;
+
+$border-container: 3px solid $dark-yellow;
+$border-column: 3px solid $green;
+$radius: .2em;
+$col-margin: .2rem;
+$col-padding: .2rem;
+
+//-----code-----
+
+body {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  background: #fcd2ab url('../images/creampaper.png');
+  background-blend-mode: multiply;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 .3rem;
+  &:active {
+    padding: 0 .3rem;
+  }
+}
+
+.disable-events {
+  pointer-events: none;
+}
+
+h1 {
+  @include font(1.5em, 700, normal, green, 'Kalam');
+  margin: .2em .4em;
+  padding: .2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#board {
+  height: calc(100vh - 1.2em);
+  margin: .6em .4em;
+}
+
+nav {
+  @include flex(stretch, flex-start);
+  @include font(1.1em, 700, italic, $orange);
+
+  height: $nav-height;
+
+  .board-name {
+    display: inline-block;
+    padding: 0 .4em;
+    @include border($border-container, 1, 1, 0, 1);
+    background-color: $yellow;
+  }
+
+  .board-name:first-child {
+    border-radius: $radius 0 0 0;
+  }
+    
+  .add-board-btn {
+    @include font(1em, $col: $orange);
+    @include border($border-container, 1, 1, 0, 0);
+    border-radius: 0 $radius 0 0;
+    background-color: $yellow;
+  }
+}
+
+.column-container {
+  @include flex(stretch, flex-start, row wrap);
+  min-width: 300px;
+  min-height: calc(100% - #{$nav-height});
+  padding: .4em .4em;
+  background-color: $yellow;
+  border: $border-container;
+  border-radius: 0 $radius $radius;
+
+  .column {
+    width: 300px;
+    min-height: 330px;
+    margin: $col-margin;
+    border: $border-column;
+    border-radius: $radius;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include flex(stretch, flex-start, column);
+
+    .column-header {
+      @include flex(center, space-between);
+
+      h2 {
+        @include font(.85em, 700, $col: $blue);
+        margin: 0 auto;
+      }
+
+      .delete-column-btn {
+        width: 1.15rem;
+        height: 1.2rem;
+        transform: scale(1.3, 1);
+        margin: -.05rem .1rem .15rem 0;
+        @include font(.6rem, 300, $col: $orange);
+        @include border($border-column, 0, 0, 1, 1);
+        border-radius: 0 $radius;
+      }
+    }
+
+    .add-card-btn {
+      @include font(1em, $col: $orange);
+      @include border($border-column, 1, 0, 1, 0);      
+      border-bottom-style: dotted;
+    }
+
+    .column-card-list {
+      flex: 1;
+      padding: .3em;
+
+      %card-basic {
+        margin: 10px auto;
+        border: $border-column;
+        border-radius: $radius;
+      }
+
+      .card {
+        @extend %card-basic;
+        background-color: #f7cea8;
+      }
+
+      .card-placeholder {
+        @extend %card-basic;        
+        height: 71px;
+      }
+
+      .card-description {
+        min-height: 1em;
+        padding: .2em .4em;        
+        @include font(.6em, 400, $col: darken($blue, 5%));
+      }
+
+      .delete-card-btn {
+        width: 100%;
+        height: 1em;
+        line-height: .5em;
+        @include font(1em, $col: $orange);
+        border-top: $border-column;
+      }
+    }
+  }
+
+  .add-column-btn {
+    min-width: 100px;
+    padding: 0;
+    @include font(1.6em, $col: $blue);    
+    @include flex();
+    order: 100;
+  }
+}
