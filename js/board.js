@@ -7,8 +7,21 @@ var board = {
   $element: $('#board .column-container')
 };
 
-$('.add-column-btn').click(function() {  
-  board.addColumn(new Column(prompt( 'Enter a column name' )));
+$('.add-column-btn').click(function() {
+  var columnName = prompt( 'Enter a column name' ),
+      self = this;
+
+    $.ajax({
+      url: baseUrl + '/column',
+      method: 'POST',
+      data: {
+        name: columnName
+      },
+      success: function(response) {
+        var column = new Column(response.id, columnName);
+        board.addColumn(column);
+      }
+    });
 });
 
 function initSortable() {
